@@ -1,20 +1,26 @@
 
 const express = require('express');
+const fs = require('fs');
 
 const app = express();
 
-// get root route router
-app.get('/', (req, res) => {
-   res.status(200).json({ message: 'this is the root page' })
-})
+// routes importation
+const ToursRouter = require('./routes/tours');
 
 
-// post request router to the router
-app.post('/', (req, res) => {
-   res.status(200).json({ message: 'this is the post endpoint' });
-})
+// use of the routers imported
+app.use(ToursRouter);
 
 
+
+
+
+
+
+
+
+
+// setup of port
 const PORT = process.env.NODE_ENV || 5000
 app.listen(PORT, () => {
    console.log(`the application is running on port${PORT}`);
